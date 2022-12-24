@@ -1,0 +1,30 @@
+=================================================================
+#                                                               #
+#   Wireskip                                                    #
+#   Date: 12/23/2022                                            #
+#                                                               #
+#   Author: David Mahannah                                      #
+#   Email: mahannahd@gmail.com                                  #
+#                                                               #
+=================================================================
+
+Compiling for Windows 10:
+
+    nmake Makefile.vc wireskip
+
+Project Structure
+
+    main.c/h
+        Main is located here.
+
+    safe_buffer.c/h
+        Thread safe buffer for concurrent message send and
+        receive
+
+    networking.c/h
+        Network handling. I mostly just wanted to name a file
+            socks...
+
+    tui_graphics.c/h
+        Not yet implemented, seperate the tui mess from the 
+        rest of the functionality.

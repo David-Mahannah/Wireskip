@@ -1,0 +1,39 @@
+# Visual C++ Makefile for PDCurses - Windows console
+#
+# Usage: nmake -f [path\]Makefile.vc [DEBUG=Y] [DLL=Y] [WIDE=Y] [UTF8=Y]
+#        [INFOEX=N] [target]
+#
+# where target can be any of:
+# [all|demos|pdcurses.lib|testcurs.exe...]
+
+O = obj
+E = .exe
+RM = del
+
+PDCURSES_WIN_H	= $(osdir)\pdcwin.h
+
+CC		= cl.exe -nologo
+
+LINK		= link.exe -nologo
+CCLIBS		= user32.lib advapi32.lib
+LIBCURSES	= libs/pdcurses.lib
+LIBSOCK		= WS2_32.lib
+
+BUILD		= $(CC) -c
+
+clean:
+	-$(RM) *.obj
+	-$(RM) *.exe
+	-$(RM) *.dll
+	-$(RM) *.exp
+	-$(RM) *.res
+
+
+wireskip: wireskip.exe
+
+wireskip.obj: libs/pdcurses.lib src/main.c
+	$(BUILD) src/main.c
+
+wireskip.exe: wireskip.obj
+	$(LINK) main.obj $(LIBCURSES) $(LIBSOCK) $(CCLIBS)
+
